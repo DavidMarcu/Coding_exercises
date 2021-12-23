@@ -1,0 +1,8 @@
+# IDE related
+.idea/
+.vscode/
+
+# Python related
+env/
+__pycache__/
+
