@@ -9,6 +9,7 @@ class Submarine:
     def __init__(self):
         self.__depth = 0
         self.__distance = 0
+        self.__aim = 0
 
     def get_final_coordinates(self, command_list: list) -> tuple:
         for command in command_list:
@@ -27,9 +28,9 @@ class Submarine:
         if comm == self.FORWARD_COMMAND:
             self.__move_forward_by(int(command[1]))
         elif comm == self.UP_COMMAND:
-            self.__go_up_by(int(command[1]))
+            self.__decrease_aim_By(int(command[1]))
         elif comm == self.DOWN_COMMAND:
-            self.__dive_by(int(command[1]))
+            self.__increase_aim_by(int(command[1]))
         else:
             raise ValueError(
                 "invalid command. Valid commands: 'up', 'down' and 'forward'")
@@ -38,19 +39,21 @@ class Submarine:
         if dist < 0:
             raise ValueError("Only positive values allowed")
         self.__distance = self.__distance + dist
-
-    def __dive_by(self, depth: int):
-        if depth < 0:
-            raise ValueError("Only positive values allowed")
-        self.__depth = self.__depth + depth
-
-    def __go_up_by(self, amount: int):
-        if amount < 0:
-            raise ValueError("Only positive values allowed")
-        self.__depth = self.__depth - amount
+        self.__depth = self.__depth + self.__aim * dist
         if self.__depth < 0:
             self.__depth = 0
+
+    def __increase_aim_by(self, value: int):
+        if value < 0:
+            raise ValueError("Only positive values allowed")
+        self.__aim = self.__aim + value
+
+    def __decrease_aim_By(self, amount: int):
+        if amount < 0:
+            raise ValueError("Only positive values allowed")
+        self.__aim = self.__aim - amount
 
     def reset(self):
         self.__depth = 0
         self.__distance = 0
+        self.__aim = 0
