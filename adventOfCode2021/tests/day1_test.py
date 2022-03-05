@@ -1,12 +1,10 @@
 import unittest
 from parameterized import parameterized
-from src.day1 import SonarSweep
+from adventOfCode2021.src.day1 import SonarSweep
 
 
 class SonarSweepTest(unittest.TestCase):
-    def setUp(self) -> None:
-        self.target = SonarSweep()
-
+  
     @parameterized.expand([
         ([199, 200], 1),
         ([199, 200, 208, 210, 200, 207, 240, 269, 260, 263], 7),

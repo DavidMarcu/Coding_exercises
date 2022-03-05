@@ -1,7 +1,7 @@
 import unittest
 from parameterized import parameterized
 
-from src.day2 import Submarine
+from adventOfCode2021.src.day2 import Submarine
 
 
 class SubmarineTest(unittest.TestCase):

@@ -4,5 +4,6 @@
 
 # Python related
 env/
+.venv/
 __pycache__/
 

@@ -1,4 +1,4 @@
-from src.utils import log_error
+from adventOfCode2021.src.utils import log_error
 
 
 class Submarine:
